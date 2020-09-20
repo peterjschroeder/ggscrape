@@ -40,7 +40,7 @@ req_fragment() {
 
 check_permission() {
     debug_print testing permission
-    if ! req_fragment "forum/${group_id}%5B1-1-false%5D" -I | grep -q '200 OK'
+    if ! req_fragment "forum/${group_id}%5B1-1-false%5D" -I | sed 1q | grep -q 200
     then
         echo 'Unable to access group.' >&2
         return 1
